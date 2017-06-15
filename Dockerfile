@@ -4,6 +4,7 @@ RUN set -x \
  && apk add --no-cache \
         ca-certificates \
         duplicity \
+        lftp \
         openssh \
         openssl \
         py-crypto \
@@ -25,4 +26,4 @@ VOLUME ["/home/duplicity/.cache/duplicity", "/home/duplicity/.gnupg"]
 
 USER duplicity
  
-CMD ["duplicity"]
+ENTRYPOINT ["duplicity"]
