@@ -15,15 +15,12 @@ RUN set -x \
  && update-ca-certificates \
  && pip install pydrive==1.3.1 \
  && apk del --purge py-pip \
- && adduser -D -u 1896 duplicity \
- && mkdir -p /home/duplicity/.cache/duplicity \
- && mkdir -p /home/duplicity/.gnupg \
- && chmod -R go+rwx /home/duplicity/
+ && mkdir -p /root/.cache/duplicity \
+ && mkdir -p /root/.gnupg \
+ && chmod -R go+rwx /root
 
-ENV HOME=/home/duplicity
+ENV HOME=/root
 
-VOLUME ["/home/duplicity/.cache/duplicity", "/home/duplicity/.gnupg"]
+VOLUME ["/root/.cache/duplicity", "/root/.gnupg"]
 
-USER duplicity
- 
 ENTRYPOINT ["duplicity"]
